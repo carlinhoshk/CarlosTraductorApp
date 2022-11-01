@@ -5,7 +5,11 @@ align="center">CarlosTraductorApp
 <h1 align="center">
     <a href="https://azure.microsoft.com/pt-br/">🔗 Azure <img align="center" src="https://user-images.githubusercontent.com/40872405/199332581-ded0b8ba-43ba-4788-9a0e-8ea7430803dc.svg" width="50" height="60" /> </a>
 <h1/>    
-<p align="center">🚀 App mobile android consumindo API Json da Azure services </p> 
+<p align="center">App mobile android consumindo API Json da Azure services </p> 
+
+
+<img  src="https://user-images.githubusercontent.com/40872405/199337849-9d02290e-d2e3-4d30-a64b-60a897f7ca93.gif" width="250" height="400"  /> <a/>
+
 
 
 ![Badge](https://img.shields.io/github/issues/carlinhoshk/CarlosTraductorApp?style=plastic)
