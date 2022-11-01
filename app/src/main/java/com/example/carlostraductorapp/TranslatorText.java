@@ -4,8 +4,14 @@ import static com.example.carlostraductorapp.MainActivity.inputText;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import okhttp3.MediaType;
@@ -42,19 +48,40 @@ public  class TranslatorText {
                 .addHeader("Ocp-Apim-Subscription-Region", location)
                 .addHeader("Content-type", "application/json")
                 .build();
-
-
         Response response = client.newCall(request).execute();
         return response.body().string();
 
     }
 
+
     public static String prettify(String json_text){
         JsonParser parser = new JsonParser();
-
         JsonElement json = parser.parse(json_text);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(json);
     }
+
+    public static String parse(String json_text) {
+        JsonElement jelement = new JsonParser().parse(json_text);
+        JsonObject  jobject = jelement.getAsJsonObject();
+        jobject = jobject.getAsJsonObject("translations");
+        JsonArray jarray = jobject.getAsJsonArray("text");
+        jobject = jarray.get(0).getAsJsonObject();
+        String result = jobject.get("text").getAsString();
+        return result;
+    }
+
+    public static String jsonArray(String json_text) throws JSONException {
+        JSONArray arr = new JSONArray(json_text);
+        String a = "translations";
+        //JSONObject responseObject = new JSONObject(json_text);
+        JSONObject obj = arr.getJSONObject(0);
+        JSONArray jsonArray = (JSONArray) obj.get("translations");
+        JSONObject jsonObject = (JSONObject) jsonArray.get(0);
+        String saida = jsonObject.getString("text");
+
+        return saida;
+    }
+
 
 }

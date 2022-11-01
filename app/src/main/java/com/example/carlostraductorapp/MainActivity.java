@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.textView);
         inputText = (EditText) findViewById(R.id.inputText);
 
-        System.out.println(inputText);
+        //System.out.println(inputText);
     }
 
     public void updateText(View view) throws JSONException {
@@ -54,14 +54,19 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         //System.out.println("porque não printa o input");
         // 30/10 percebo que so precisava puxar o input com gettext e to string
-        String textWritten = inputText.getText().toString();
-        System.out.println(textWritten);
+        //String textWritten = inputText.getText().toString();
+        //System.out.println(textWritten);
 
         try {
             TranslatorText translateRequest = new TranslatorText();
             String response = translateRequest.Post();
-            System.out.println(TranslatorText.prettify(response));
-            textView.setText(response);
+            //System.out.println("jason nao tratado");
+            //System.out.println((response));
+            //System.out.println("jason tratado");
+            //System.out.println(translateRequest.jsonArray(response));
+
+
+            textView.setText(translateRequest.jsonArray(response));
         } catch (Exception e) {
             System.out.println(e);
         }
